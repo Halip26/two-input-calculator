@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, request, render_template
 
 app = Flask(__name__)
 
@@ -7,34 +7,66 @@ app = Flask(__name__)
 def calculator():
     result = None
 
+    def addition(n1, n2):
+        return n1 + n2
+
+    def subtraction(n1, n2):
+        return n1 - n2
+
+    def multiplication(n1, n2):
+        return n1 * n2
+
+    def division(n1, n2):
+        return n1 / n2
+
+    def floor_division(n1, n2):
+        return n1 // n2
+
+    def modulus(n1, n2):
+        return n1 % n2
+
+    def exponent(n1, n2):
+        return n1**n2
+
+    def sqrt(n1):
+        return n1 ** (1 / 2)
+
+    def cube_root(n1):
+        return n1 ** (1 / 3)
+
     if request.method == "POST":
+
         num1 = float(request.form["num1"])
         num2 = float(request.form["num2"])
         operation = request.form["operation"]
 
         if operation == "add":
-            result = num1 + num2
+            result = addition(num1, num2)
         elif operation == "subtract":
-            result = num1 - num2
+            result = subtraction(num1, num2)
         elif operation == "multiply":
-            result = num1 * num2
+            result = multiplication(num1, num2)
         elif operation == "divide":
             if num2 != 0:
-                result = num1 / num2
+                result = division(num1, num2)
             else:
-                result = "Division by zero error"
+                result = "Division by zero is error"
+        elif operation == "floor_division":
+            if num2 != 0:
+                result = floor_division(num1, num2)
+            else:
+                result = "Floor Division by zero is error"
         elif operation == "mod":
             if num2 != 0:
-                result = num1 % num2
+                result = modulus(num1, num2)
             else:
-                result = "Modulus  by zero error"
-
+                result = "Modulus by zero is error"
         elif operation == "sqrt":
-            result = num1 ** (1 / 2)
+            result = sqrt(num1)
         elif operation == "cube_root":
-            result = num1 ** (1 / 3)
+            result = cube_root(num1)
 
-    return render_template("calculator.html", result=result)
+    return render_template("index.html", result=result)
 
 
 if __name__ == "__main__":
