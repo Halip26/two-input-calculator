@@ -4,18 +4,19 @@ body {
   padding: 0;
 }
 
+h1 {
+  text-align: center;
+  color: #007bff;
+}
+
 .container {
   max-width: 400px;
   margin: 50px auto;
   padding: 40px;
-  border: 1px solid #ccc;
+  border: 1px solid #828282;
   border-radius: 5px;
   background-color: #f9f9f9;
   box-shadow: 0 2px 5px #0000008c;
-}
-h1 {
-  text-align: center;
-  color: #007bff;
 }
 
 .form-group {
@@ -57,12 +58,14 @@ button {
   padding: 10px;
   border: none;
   font-size: 15px;
-  border-radius: 5px;
+  border-radius: 7px;
   background-color: #007bff;
   color: #fff;
   cursor: pointer;
 }
 
 button:hover {
+  transition: 0.5s ease-in-out;
   background-color: #0056b3;
+  box-shadow: 0 2px 7px #007bff;
 }
